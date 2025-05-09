@@ -8,6 +8,7 @@ Route::view('contact-us', 'contact');
 Route::view('about', 'about');
 
 Route::get('customers', [CustomersController::class, 'list']);
+Route::post( 'customers', [CustomersController::class, 'store']);
 
 
 // Blade is the rendering engine for Laravel. It allows you to create dynamic content using PHP syntax within your HTML files. Blade templates are stored in the `resources/views` directory and have a `.blade.php` file extension.
