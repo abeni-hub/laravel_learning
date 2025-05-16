@@ -11,13 +11,13 @@ class CustomersController extends Controller
     //
     public function list()
     {
+        $activeCustomers = Customer::active()->get();
+        $inactiveCustomers = Customer::inactive()->get();
         $customers = Customer::all();
 
-        // dd($customers);
+        // dd($activeCustomers);
 
-        return view('internals.customers', [
-            'customers' => $customers,
-        ]);
+        return view('internals.customers', compact('activeCustomers', 'inactiveCustomers'));
     }
 
     public function store()
@@ -25,14 +25,25 @@ class CustomersController extends Controller
 
        $data = request()->validate([
             'name' => 'required|min:3|max:255',
+            'email' => 'required |email',
+            'active' => 'required',
         ]);
+         
 
-
+        dd($data);
+        
+        $customer = Customer::create($data);
         $customers = new Customer();
         $customers->name = request('name');
+        $customers->email = request('email');
+        $customers->active = request('active');
         $customers->save();
 
 
         return back();
     }
 }
+
+
+// Eloquent is the database ORM that laravel uses behind the scenes.
+// Eloquent is a simple and elegant way to interact with your database.
