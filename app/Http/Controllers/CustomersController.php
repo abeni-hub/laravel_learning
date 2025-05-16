@@ -29,16 +29,8 @@ class CustomersController extends Controller
             'active' => 'required',
         ]);
          
-
-        dd($data);
+        Customer::create($data);
         
-        $customer = Customer::create($data);
-        $customers = new Customer();
-        $customers->name = request('name');
-        $customers->email = request('email');
-        $customers->active = request('active');
-        $customers->save();
-
 
         return back();
     }
