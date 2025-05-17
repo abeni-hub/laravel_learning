@@ -13,11 +13,11 @@ class CustomersController extends Controller
     {
         $activeCustomers = Customer::active()->get();
         $inactiveCustomers = Customer::inactive()->get();
-        $customers = Customer::all();
+        $companies = Customer::all();
 
         // dd($activeCustomers);
 
-        return view('internals.customers', compact('activeCustomers', 'inactiveCustomers'));
+        return view('internals.customers', compact('activeCustomers', 'inactiveCustomers', 'companies'));
     }
 
     public function store()
@@ -27,6 +27,7 @@ class CustomersController extends Controller
             'name' => 'required|min:3|max:255',
             'email' => 'required |email',
             'active' => 'required',
+            'company_id' => 'required|exists:companies,id',
         ]);
          
         Customer::create($data);
