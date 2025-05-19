@@ -9,15 +9,21 @@ use App\Models\Customer;
 class CustomersController extends Controller
 {
     //
-    public function list()
+    public function index()
     {
         $activeCustomers = Customer::active()->get();
         $inactiveCustomers = Customer::inactive()->get();
-        $companies = Customer::all();
+        
 
         // dd($activeCustomers);
 
-        return view('internals.customers', compact('activeCustomers', 'inactiveCustomers', 'companies'));
+        return view('customers.index', compact('activeCustomers', 'inactiveCustomers'));
+    }
+
+    public function create(){
+
+        $companies = \App\Models\Company::with('customers')->get();
+        return view('customers.create', compact('companies'));
     }
 
     public function store()
