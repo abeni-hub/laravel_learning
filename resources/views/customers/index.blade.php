@@ -9,8 +9,11 @@
 
 <div class="row col-12">
     <h2>Customers List</h2>
-    <p><a href="{{ route('customers.create') }}" class="btn btn-primary">Add New Customer</a></p>
+    <p><a href="customers/create">Add New Customer</a></p>
 </div>
+
+
+
 <div class="row col-6">
 <h1>Active Customers</h1>
 
