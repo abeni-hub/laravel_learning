@@ -1,9 +1,8 @@
 @extends('layout')
 
 @section('title')
-
     Customers List 
-    @endsection
+@endsection
 
 @section('content')
 
@@ -12,41 +11,27 @@
     <p><a href="customers/create">Add New Customer</a></p>
 </div>
 
-
-
-<div class="row col-6">
-<h1>Active Customers</h1>
-
-<ul>
-    @foreach ($activeCustomers as $activeCustomer)
-
-        <li>{{ $activeCustomer->name}} <span class='text-muted'>({{$activeCustomer->email}})</span></li>
-    
-    @endforeach
-</ul>
-</div>
-
-<div class="row col-6">
-<h1>Inactive Customers</h1>
-<ul>
-    @foreach ($inactiveCustomers as $inactiveCustomer)
-        <li>{{ $inactiveCustomer->name}} <span class='text-muted'>({{$inactiveCustomer->email}})</span></li>
-    
-    @endforeach
-</ul>
-</div>
-
-
 <div class="row">
-    <div class="col-12">
-        @foreach($companies as $company)
-        <h2>{{ $company->name }}</h2>
+    <div class="col-6">
+        <h1>Active Customers</h1>
         <ul>
-            @foreach($company->customers as $customer)
-                <li>{{ $customer->name }}</li>
+            @foreach ($activeCustomers as $activeCustomer)
+                <li>{{ $activeCustomer->name}} <span class='text-muted'>({{$activeCustomer->email}})</span></li>
             @endforeach
         </ul>
-        @endforeach
     </div>
 </div>
+
+<div class="row">
+    <div class="col-6">
+        <h1>Inactive Customers</h1>
+        <ul>
+            @foreach ($inactiveCustomers as $inactiveCustomer)
+                <li>{{ $inactiveCustomer->name}} <span class='text-muted'>({{$inactiveCustomer->email}})</span></li>
+            @endforeach
+        </ul>
+    </div>
+</div>
+
+
 @endsection

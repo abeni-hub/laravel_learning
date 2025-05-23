@@ -1,9 +1,9 @@
 @extends('layout')
 
-@section('title','Add New Customers')
-
-    Customers List 
-    @endsection
+@section('title')
+      
+     Add New Customers
+@endsection
 
 @section('content')
 
@@ -15,7 +15,7 @@
 
 
 <div class="row col-12">
-<form action="customers" method="POST">
+<form action="/customers" method="POST">
 
 <div class="form-group">
     <label for="name">Name </label>

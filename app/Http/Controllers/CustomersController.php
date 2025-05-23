@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Company;
 use App\Models\Customer;
 
 
@@ -13,11 +14,12 @@ class CustomersController extends Controller
     {
         $activeCustomers = Customer::active()->get();
         $inactiveCustomers = Customer::inactive()->get();
+        $companies = \App\Models\Company::with('customers')->get();
         
 
         // dd($activeCustomers);
 
-        return view('customers.index', compact('activeCustomers', 'inactiveCustomers'));
+        return view('customers.index', compact('activeCustomers', 'inactiveCustomers','companies'));
     }
 
     public function create(){
@@ -31,7 +33,7 @@ class CustomersController extends Controller
 
        $data = request()->validate([
             'name' => 'required|min:3|max:255',
-            'email' => 'required |email',
+            'email' => 'required|email|unique:customers,email',
             'active' => 'required',
             'company_id' => 'required|exists:companies,id',
         ]);
@@ -39,7 +41,7 @@ class CustomersController extends Controller
         Customer::create($data);
         
 
-        return back();
+        return redirect('customers');
     }
 }
 
