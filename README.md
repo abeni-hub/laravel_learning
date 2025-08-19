@@ -86,3 +86,11 @@ php artisan serve
 
 
 The app will be available at: http://localhost:8000
+
+**Contact**
+
+LinkedIn: Abenezer Sileshi
+
+Gmail: abinesilew@gmail.com
+
+Telegram: @Aben14i
