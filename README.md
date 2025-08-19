@@ -86,6 +86,7 @@ php artisan serve
 
 
 The app will be available at: http://localhost:8000
+```
 
 **Contact**
 
